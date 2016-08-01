@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@ViewBag.StorageUsed mb
+
+<table>
+    <tr>
+        <th>FileName</th>
+        <th>Size</th>
+        <th>Creation Date</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(FileInfo item in ViewBag.FilesInfo)
+    {
+        <tr>
+            <td>@item.Name.Substring(19)</td>
+            <td>@((item.Length / 1024) / 1024) mb</td>
+            <td>@item.CreationTime</td>
+            <td>
+                @using (Html.BeginForm("Delete", "File", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("fileId", item.Name.Split('_').ElementAt(0))
+                    @Html.Hidden("fileName", item.Name.Substring(19))
+                    <button type="submit" class="btn btn-danger">
+                        Supprimer
+                    </button>
+                }
+                @using (Html.BeginForm("Download", "File", FormMethod.Post))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("fileId", item.Name.Split('_').ElementAt(0))
+                    @Html.Hidden("fileName", item.Name.Substring(19))
+                    <button type="submit" class="btn btn-success">
+                        Download
+                    </button>
+                }
+            </td>
+        </tr>
+    }
+</table>

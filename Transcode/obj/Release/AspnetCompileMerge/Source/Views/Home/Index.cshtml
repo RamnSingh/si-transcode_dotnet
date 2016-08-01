@@ -1,0 +1,85 @@
+﻿@model Transcode.ViewModel.Conversion.ConversionForm
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div id="homepage">
+    <div class="row jumbotron">
+        <h1>Convertisseur de médias</h1>
+        <div class="col-md-12">
+            <p>
+                Transcode est un service de conversion de médias en ligne. La plupart des formats audio et vidéos sont acceptés par ce service. <a href="#">En cliquant ici,</a> vous pouvez consulter les formats de médias supportés par notre service.
+            </p>
+            <a href="@Url.Action("index", "services")" class="btn btn-primary">Plus d'informations &raquo;</a>
+        </div>
+    </div>
+
+    <div class="row well well-lg">
+        <div class="bg-danger">
+            @Html.ValidationMessage("urlFileRequirement")
+        </div>
+        @using (Html.BeginForm("convert", "conversion", FormMethod.Post, new { @class = "form-inline col-md-12", enctype = "multipart/form-data", id="conversionForm"}))
+        {
+            <div class="form-group col-md-4">
+                <label for="conversionFormUrl">URL de média</label><br />
+                @Html.TextBoxFor(m => m.Url, new { type = "url", @class = "form-control full-width", id = "conversionFormUrl", placeholder = "Entrez un URL" })
+            </div>
+            <div class="form-group col-md-4">
+                <label for="conversionFormFile">Uploader un fichier</label><br />
+                @Html.TextBoxFor(m => m.File, new { type = "file", @class = "form-control full-width", id = "conversionFormFile" })
+            </div>
+            <div class="form-group col-md-3">
+                <label for="conversionFormFormat">Convertir en</label><br />
+                <select name="Format" class="form-control full-width" id="conversionFormFormat">
+                    <optgroup label="Video" id="format_video">
+                        @foreach (string format in (IEnumerable<string>)ViewBag.videoFormats)
+                        {
+                            <option>@format</option>
+                        }
+                    </optgroup>
+
+
+
+                    <optgroup label="Audio" id="format_audio">
+                        @foreach (string format in (IEnumerable<string>)ViewBag.audioFormats)
+                        {
+                            <option>@format</option>
+                        }
+                    </optgroup>
+                </select>
+                @Html.ValidationMessageFor(model => model.Format, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-1">
+                <br />
+                <button class="btn btn-primary">Convertir</button>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <h2 class="text-center text-primary">
+            <strong>Nos services</strong>
+        </h2>
+        <div class="col-md-4 panel panel-default">
+            <h2 class="text-center">Conversion</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            </p>
+            <a href="@Url.Action("conversion", "services")" class="btn btn-default center-block">Plus d'informations &raquo;</a>
+        </div>
+        <div class="col-md-4 panel panel-default">
+            <h2 class="text-center">Stockage</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            </p>
+            <a href="@Url.Action("stockage", "services")" class="btn btn-default center-block">Plus d'informations &raquo;</a>
+        </div>
+        <div class="col-md-4 panel panel-default">
+            <h2 class="text-center">Support</h2>
+            <p>
+                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
+            </p>
+            <a href="@Url.Action("support", "services")" class="btn btn-default center-block">Plus d'informations &raquo;</a>
+        </div>
+    </div>
+</div>

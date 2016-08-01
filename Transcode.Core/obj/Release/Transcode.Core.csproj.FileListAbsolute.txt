@@ -1,0 +1,6 @@
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\bin\Release\Transcode.Core.dll
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\bin\Release\Transcode.Core.pdb
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\bin\Release\MediaToolkit.dll
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\obj\Release\Transcode.Core.csprojResolveAssemblyReference.cache
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\obj\Release\Transcode.Core.dll
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\obj\Release\Transcode.Core.pdb

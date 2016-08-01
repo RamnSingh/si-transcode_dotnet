@@ -1,0 +1,5 @@
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\bin\Debug\Transcode.Core.dll
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\bin\Debug\Transcode.Core.pdb
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\obj\Debug\Transcode.Core.dll
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\obj\Debug\Transcode.Core.pdb
+C:\Users\Ramneek SINGH\documents\visual studio 2013\Projects\Transcode\Transcode.Core\bin\Debug\MediaToolkit.dll

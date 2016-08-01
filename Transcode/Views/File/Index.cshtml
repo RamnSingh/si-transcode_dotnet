@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    decimal remainedStorage = (decimal)(((1024 * 1024) * 10 - (long)ViewBag.StorageUsed) / 1024);
+    int fileNumber = 1;
+}
+
+<h2>Index</h2>
+
+<h3 class="text-info">
+    Il vous reste <span class="label label-primary">@remainedStorage</span> mb
+</h3>
+
+<table class="table table-hover">
+    <tr>
+        <th>N°</th>
+        <th>FileName</th>
+        <th>Size</th>
+        <th>Creation Date</th>
+        <th>Actions</th>
+    </tr>
+    @foreach(FileInfo item in ViewBag.FilesInfo)
+    {
+        <tr>
+            <td><span class="badge">@fileNumber</span></td>
+            <td>@item.Name.Substring(19)</td>
+            <td><span class="label label-default">@((item.Length / 1024) / 1024) mb</span></td>
+            <td>@item.CreationTime</td>
+            <td>
+
+                @using (Html.BeginForm("Delete", "File", FormMethod.Post, new { @class = "inline" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("fileId", item.Name.Split('_').ElementAt(0))
+                    @Html.Hidden("fileName", item.Name.Substring(19))
+                    <button type="submit" class="btn btn-danger">
+                        Supprimer
+                    </button>
+                }
+                @using (Html.BeginForm("Download", "File", FormMethod.Post, new { @class = "inline" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.Hidden("fileId", item.Name.Split('_').ElementAt(0))
+                    @Html.Hidden("fileName", item.Name.Substring(19))
+                    <button type="submit" class="btn btn-success">
+                        Download
+                    </button>
+                }
+                @{
+                    fileNumber++;
+                }
+            </td>
+        </tr>
+    }
+</table>
